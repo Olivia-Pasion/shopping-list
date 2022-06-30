@@ -1,20 +1,22 @@
-import { createItem } from '../services/client';
+
 
 
 export default function createAddItem(form, { handleAdd }) {
     
-    form.addEventListener('click', async () => {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
         const data = new FormData(form);
-        await createItem({
-            item: data.get('item'),
-            quantity: data.get('quantity'),
-            //need to add bought category
-        });
+        handleAdd(
+            data.get('item'),
+            data.get('quantity')
+        );
+    
     });
 
     //may change event listener from this format to AddTodo demo format
 
-    return ({ }) => {
+    return () => {
         
     };
 }

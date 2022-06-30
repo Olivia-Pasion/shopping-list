@@ -1,3 +1,4 @@
+import { getUser } from './auth-service.js';
 import { client } from './client.js';
 
 //retrieves all rows from supabase
@@ -28,7 +29,6 @@ export async function createItem(item, quantity) {
             quantity 
         }])
         .single();
-
     return response.data;
 }
 
@@ -45,12 +45,12 @@ export async function boughtItem(item) {
     return response.data;
 }
 
-//removes row from supabase
+//removes all from supabase
 export async function deleteList() {
     const response = await client
         .from('shopping_list')
         .delete()
-        .neq('quantity', 0);
+        .match({ user_id: getUser().id });
 
     return response.data;
 }
