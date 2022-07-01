@@ -1,4 +1,4 @@
-
+// import { getAllItems } from '../services/list-service';
 
 export default function createItemList(root, {
     handleBought
@@ -45,4 +45,7 @@ export function ListItem({ item, handleBought }) {
     return p;
     
 }
+
+
+
 

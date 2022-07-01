@@ -37,9 +37,9 @@ export async function boughtItem(item) {
     const response = await client
         .from('shopping_list')
         .update({ 
-            bought: true
+            bought: item.bought
         })
-        .eq('item', item.item)
+        .match({ id: item.id })
         .single();
 
     return response.data;

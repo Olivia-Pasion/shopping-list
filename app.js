@@ -6,7 +6,6 @@ import createItemList from './components/ItemList.js';
 import createDeleteList from './components/DeleteList.js';
 import {
     getAllItems,
-    getItems,
     createItem,
     boughtItem,
     deleteList
@@ -43,18 +42,9 @@ async function handleAdd(item, quantity) {
 async function handleBought(item) {
     item.bought = !item.bought;
     const index = list.indexOf(item);
-    list[index] = await boughtItem();
-}
-
-
-async function handleUpdate(item) {
-
-    item.item = item;
-    const index = list.indexOf(item);
     list[index] = await boughtItem(item);
-
-    display();
 }
+
 
 async function handleDelete() {
 

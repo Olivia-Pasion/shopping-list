@@ -11,12 +11,6 @@ export default function createAddItem(form, { handleAdd }) {
             data.get('item'),
             data.get('quantity')
         );
-    
     });
-
-    //may change event listener from this format to AddTodo demo format
-
-    return () => {
-        
-    };
+    return () => {};
 }
